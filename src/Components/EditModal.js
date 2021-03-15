@@ -30,12 +30,14 @@ const Modal = (props) => {
       close(false);
     } else {
       errorHandle(setIsErrors, 'Sorry, API error.');
+      return;
     }
   }
 
   const editingUser = async (first_name, last_name, email) => {
     if (!first_name.trim() || !last_name.trim() || !validateEmail(email)) {
       errorHandle(setIsErrors, 'Check the fields and try again.');
+      return;
     }
     const response = await fetch(`https://reqres.in/api/users/${currentUser.id}`, {
       method: 'PUT',
@@ -50,6 +52,7 @@ const Modal = (props) => {
       close(false);
     } else {
       errorHandle(setIsErrors, 'Sorry, API error.');
+      return;
     }
     
   };
